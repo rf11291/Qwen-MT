@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qwen MT 翻译设置</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Qwen MT 翻译插件设置</h1>
+      <p>配置模型访问参数，并管理“始终翻译语言”策略。</p>
+
+      <label>API Endpoint</label>
+      <input id="endpoint" type="text" placeholder="https://.../chat/completions" />
+
+      <label>API Key</label>
+      <input id="apiKey" type="password" placeholder="sk-..." />
+
+      <label>请求超时（毫秒）</label>
+      <input id="timeoutMs" type="number" min="5000" step="1000" />
+
+      <label>始终翻译语言（逗号分隔，如 en,ja,ko）</label>
+      <input id="alwaysLangs" type="text" />
+
+      <button id="saveBtn">保存</button>
+      <p id="status"></p>
+    </main>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

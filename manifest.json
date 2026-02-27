@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Qwen MT 网页翻译助手",
+  "description": "专为 Qwen MT 模型优化的网页翻译插件，支持整页翻译、快捷键、模型切换与始终翻译设置。",
+  "version": "0.1.0",
+  "permissions": ["storage", "activeTab", "scripting", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "Qwen MT 翻译"
+  },
+  "options_page": "src/options/options.html",
+  "commands": {
+    "toggle-translation": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "启用/关闭当前页面翻译"
+    },
+    "retranslate-page": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+U",
+        "mac": "Command+Shift+U"
+      },
+      "description": "重新翻译当前页面"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
